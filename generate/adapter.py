@@ -83,6 +83,16 @@ def main(
     fabric.print(f"Time to instantiate model: {time.time() - t0:.02f} seconds.", file=sys.stderr)
 
     t0 = time.time()
+
+    if not adapter_path.exists():
+        s = f"{adapter_path} does not exist."
+        raise FileNotFoundError(s)
+
+    if adapter_path.is_dir():
+        s = "--adapter_path should point to a checkpoint file, not a folder."
+        raise ValueError(s)
+
+
     with lazy_load(checkpoint_path) as checkpoint, lazy_load(adapter_path) as adapter_checkpoint:
         checkpoint.update(adapter_checkpoint.get("model", adapter_checkpoint))
         model.load_state_dict(checkpoint, strict=quantize is None)

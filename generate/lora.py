@@ -106,6 +106,15 @@ def main(
     fabric.print(f"Time to instantiate model: {time.time() - t0:.02f} seconds.", file=sys.stderr)
 
     t0 = time.time()
+
+    if not lora_path.exists():
+        s = f"{lora_path} does not exist."
+        raise FileNotFoundError(s)
+
+    if lora_path.is_dir():
+        s = "--lora_path should point to a checkpoint file, not a folder."
+        raise ValueError(s)
+
     with lazy_load(checkpoint_path) as checkpoint, lazy_load(lora_path) as lora_checkpoint:
         checkpoint.update(lora_checkpoint.get("model", lora_checkpoint))
         model.load_state_dict(checkpoint, strict=quantize is None)
