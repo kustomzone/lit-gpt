@@ -12,7 +12,7 @@ The way the script is used depends on the finetuning method. The commands for co
 
 ### Full Finetuning
 
-After full finetuning, your checkpoint directory will contain a file named `lit_model_finetuned.pth`and converting the finetuned model back to its original weights naming convention can be done by setting the `--checkpoint_name` with:
+After full finetuning, your checkpoint directory will contain a file named `lit_model_finetuned.pth` and converting the finetuned model back to its original weights naming convention can be done with the following:
 
 ```sh
 python scripts/convert_lit_checkpoint.py \
@@ -23,7 +23,9 @@ python scripts/convert_lit_checkpoint.py \
 
 ### Adapter and Adapter V2 Finetuning
 
-After finetuning with either Adapter technique, your checkpoint directory will contain a file named `lit_model_adapter_finetuned.pth` and converting the finetuned model back to its original weights naming convention can be done by setting the `--checkpoint_name` with:
+After finetuning with either Adapter technique, your checkpoint directory will contain a file named `lit_model_adapter_finetuned.pth` and converting the finetuned model back to its original weights naming convention can be done with the following:
+
+### Adapter
 
 ```sh
 python scripts/convert_lit_checkpoint.py \
@@ -32,14 +34,23 @@ python scripts/convert_lit_checkpoint.py \
     --model_name Llama-2-7b-chat-hf
 ```
 
+### Adapter V2
+
+```sh
+python scripts/convert_lit_checkpoint.py \
+    --checkpoint_name lit_model_adapter_finetuned.pth  \
+    --checkpoint_dir out/adapter_v2/alpaca/ \
+    --model_name Llama-2-7b-chat-hf
+```
+
 ### LoRA Finetuning
 
-After finetuning with LoRA, your checkpoint directory will contain a file named `lit_model_lora_finetuned.pth` and converting the finetuned model back to its original weights naming convention can be done by setting the `--checkpoint_name` with:
+After finetuning with LoRA, your checkpoint directory will contain a file named `lit_model_lora_finetuned.pth` and converting the finetuned model back to its original weights naming convention can be done with the following:
 
 ```sh
 python scripts/convert_lit_checkpoint.py \
     --checkpoint_name lit_model_lora_finetuned.pth  \
-    --checkpoint_dir out/adapter/alpaca/ \
+    --checkpoint_dir out/lora/alpaca/ \
     --model_name Llama-2-7b-chat-hf
 ```
 
