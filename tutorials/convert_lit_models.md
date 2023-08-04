@@ -8,7 +8,7 @@ The way the script is used depends on the finetuning method. The commands for co
 > all examples use the Meta Llama-2-7b-chat-hf checkpoints and Alpaca dataset during finetuning
 
 > [!NOTE]\
-> finetuned checkpoints will be saved to a subdirectory in a main directory named `out` e.g. finetuning with adapter_v2 will save checkpoints in `out/adapter_v2/alpaca`. that new subdirectory is used in the `--checkpoint_dir` in convert_lit_checkpoint
+> finetuned checkpoints will be saved to a subdirectory in a main directory named `out` e.g. finetuning with adapter_v2 will save checkpoints in `out/adapter_v2/alpaca`. that new subdirectory is used as the `--checkpoint_dir` argument provided to convert_lit_checkpoint
 
 ### Full Finetuning
 
