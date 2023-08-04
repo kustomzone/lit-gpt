@@ -34,6 +34,9 @@ def test_main(fake_checkpoint_dir, monkeypatch, version):
     generate_mock.return_value = torch.tensor([[3, 2, 1]])
     monkeypatch.setattr(generate, "generate", generate_mock)
 
+    with open("out/adapter/alpaca/lit_model_adapter_finetuned.pth", "w") as _:
+        pass
+
     num_samples = 1
     out, err = StringIO(), StringIO()
     with redirect_stdout(out), redirect_stderr(err):
