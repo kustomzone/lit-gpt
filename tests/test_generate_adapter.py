@@ -1,6 +1,7 @@
 import json
 import subprocess
 import sys
+import os
 from contextlib import redirect_stdout, redirect_stderr
 from io import StringIO
 from pathlib import Path
@@ -34,6 +35,7 @@ def test_main(fake_checkpoint_dir, monkeypatch, version):
     generate_mock.return_value = torch.tensor([[3, 2, 1]])
     monkeypatch.setattr(generate, "generate", generate_mock)
 
+    os.makedirs("out/adapter/alpaca/")
     with open("out/adapter/alpaca/lit_model_adapter_finetuned.pth", "w") as _:
         pass
 
