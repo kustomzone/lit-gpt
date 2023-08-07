@@ -8,7 +8,7 @@ The way the script is used depends on the finetuning method. The commands for co
 > all examples use the Meta Llama-2-7b-chat-hf checkpoints and Alpaca dataset during finetuning
 
 > [!NOTE]\
-> finetuned checkpoints will be saved to a subdirectory in a main directory named `out` e.g. finetuning with adapter_v2 will save checkpoints in `out/adapter_v2/alpaca`. that new subdirectory is used as the `--checkpoint_dir` argument provided to convert_lit_checkpoint
+> finetuned checkpoints will be saved to a subdirectory in a main directory named `out` e.g. finetuning with adapter_v2 will save checkpoints in `out/adapter_v2/alpaca`. that new subdirectory is used as the `--out_dir` argument provided to convert_lit_checkpoint
 
 ### Full Finetuning
 
@@ -17,7 +17,7 @@ After full finetuning, your checkpoint directory will contain a file named `lit_
 ```sh
 python scripts/convert_lit_checkpoint.py \
     --checkpoint_name lit_model_finetuned.pth  \
-    --checkpoint_dir out/full/alpaca/ \
+    --out_dir out/full/alpaca/ \
     --model_name Llama-2-7b-chat-hf
 ```
 
@@ -30,7 +30,7 @@ After finetuning with either Adapter technique, your checkpoint directory will c
 ```sh
 python scripts/convert_lit_checkpoint.py \
     --checkpoint_name lit_model_adapter_finetuned.pth  \
-    --checkpoint_dir out/adapter/alpaca/ \
+    --out_dir out/adapter/alpaca/ \
     --model_name Llama-2-7b-chat-hf
 ```
 
@@ -39,7 +39,7 @@ python scripts/convert_lit_checkpoint.py \
 ```sh
 python scripts/convert_lit_checkpoint.py \
     --checkpoint_name lit_model_adapter_finetuned.pth  \
-    --checkpoint_dir out/adapter_v2/alpaca/ \
+    --out_dir out/adapter_v2/alpaca/ \
     --model_name Llama-2-7b-chat-hf
 ```
 
@@ -50,7 +50,7 @@ After finetuning with LoRA, your checkpoint directory will contain a file named 
 ```sh
 python scripts/convert_lit_checkpoint.py \
     --checkpoint_name lit_model_lora_finetuned.pth  \
-    --checkpoint_dir out/lora/alpaca/ \
+    --out_dir out/lora/alpaca/ \
     --model_name Llama-2-7b-chat-hf
 ```
 
